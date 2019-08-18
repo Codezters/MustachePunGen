@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        
+        <script>
+            var i = 0;
+            var txt = "";
+            var speed = 50;
+            
+            function typeWriter() {
+                if (i < txt.length) 
+                    if (txt.charAt(i) == "/") {
+                        document.getElementById("mustachepun").innerHTML += "<i>";
+                        i++;
+                    } 
+                    else if (txt.charAt(i) == "^") {
+                        console.log(txt.charAt(i));
+                        document.getElementById("mustachepun").innerHTML += "</i>";
+                        i++;
+                    }
+                        document.getElementById("mustachepun").innerHTML += txt.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, speed);
+                }
+            
+            function ready() {
+                document.getElementById("mustachepun").innerHTML = "";
+                i = 0;
+                txt = "I /MUSTACHE^ you " + document.getElementById("textbar").value;
+                typeWriter()
+                document.getElementById("textbar").value = "";
+            }
+        </script>
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+            
+            p {
+                font-family: 'Press Start 2P', cursive;
+                position: absolute;
+                top: 7%;
+                margin-right: 61%;
+                left: 10%;
+                font-size: 125%;
+                color: white;
+                font-smooth: never;
+                -webkit-font-smoothing : none;
+                
+            }
+            img {
+                position:  absolute;
+            }
+            body {
+                background-color: black;
+            }
+            #textbar {
+                position: absolute;
+                top: 25%;
+            }
+            #submitit {
+                position: absolute;
+                top: 30%;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <img src="pic.png">
+        <p id ="mustachepun"></p>
+        <input type="text" id="textbar">
+        <button id="submitit" onclick="ready()" >SUBMIT</button>
+    </body>
+</html>
